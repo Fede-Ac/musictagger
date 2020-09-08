@@ -15,7 +15,7 @@
                         <div class="form-group">
                             <!-- EMAIL -->
                             <label for="email">Correo electrónico</label>
-                            <input type="email" name="email"
+                            <input type="email" name="email" maxlength="100"
                                 class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" id="email"
                                 aria-describedby="emailHelp" placeholder="Ingrese correo electrónico"
                                 value="{{ Auth::user()->email }}" required>
@@ -28,7 +28,7 @@
                         <div class="form-group">
                             <!-- NOMBRE -->
                             <label for="nombre">Nombre</label>
-                            <input type="text" name="name" class="form-control" id="nombre"
+                            <input type="text" name="name" maxlength="30" class="form-control" id="nombre"
                                 value="{{ Auth::user()->nombre }}" placeholder="Ingrese su nombre" required>
                             @if ($errors->has('name'))
                                 <span class="invalid-feedback" role="alert">
@@ -51,7 +51,7 @@
                         <div class="form-group">
                             <!-- CONTRASEÑA -->
                             <label for="password">Nueva contraseña</label>
-                            <input type="password" name="password"
+                            <input type="password" name="password" maxlength="100"
                                 class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" id="password"
                                 placeholder="Ingrese su contraseña">
                             @if ($errors->has('password'))

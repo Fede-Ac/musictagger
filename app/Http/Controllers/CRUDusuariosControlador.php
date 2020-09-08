@@ -65,7 +65,7 @@ class CRUDusuariosControlador extends Controller
     public function show($id)
     {
         $user = User::findOrFail($id);
-        return view('usuarios.show', compact('user'));
+        return view('/usuarios/ver/', compact('user'));
 
     }
 
@@ -78,7 +78,7 @@ class CRUDusuariosControlador extends Controller
     public function edit($idUsuario)
     {
         $user = User::findOrFail($idUsuario);
-        return view('usuarios.edit', compact('user'));
+        return view('/usuarios/modificar/', compact('user'));
     }
 
     /**
@@ -99,7 +99,7 @@ class CRUDusuariosControlador extends Controller
 
         //dd($request->fechaNac); //mostrar
         $usuario->save();
-        return redirect('home');
+        return redirect('/home');
     }
 
     /**

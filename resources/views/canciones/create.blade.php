@@ -9,7 +9,7 @@
                     <h5 class="card-title">Añadir una nueva canción</h5>
                 </div>
                 <div class="card-body">
-                    <form action="/usuarios/guardar/f" method="POST">
+                    <form action="/usuarios/guardar" method="POST">
                         <!--enctype="multipart/form-data"-->
                         @method('PUT')
                         @csrf
@@ -24,29 +24,23 @@
                             </select>
                             <br>
 
-                            <!-- COLLAPSE 
+                            <!-- COLLAPSE -->
                             <div id="accordion">
-                                <div class="card">
-                                    <div class="card-header" id="headingOne">
-                                        <h5 class="mb-0">
-                                            <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne"
-                                                aria-expanded="true" aria-controls="collapseOne">
-                                                Añadir un autor
-                                            </button>
-                                        </h5>
-                                    </div>
+                                <button type="button" class="btn btn-link" data-toggle="collapse" data-target="#collapseOne"
+                                    aria-expanded="true" aria-controls="collapseOne">
+                                    Añadir un autor
+                                </button>
 
-                                    <div id="collapseOne" class="collapse" aria-labelledby="headingOne"
-                                        data-parent="#accordion">
-                                        <div class="card-body">
-                                            <input type="text" name="IDautor" class="form-control"
-                                                placeholder="Ingrese un nuevo autor">
-                                        </div>
+                                <div id="collapseOne" class="collapse" aria-labelledby="headingOne"
+                                    data-parent="#accordion">
+                                    <div class="card-body">
+                                        <input type="text" name="autor" maxlength="30" class="form-control"
+                                            placeholder="Ingrese un nuevo autor">
                                     </div>
                                 </div>
                             </div>
-                             FIN COLLAPSE -->
-                             
+                            <!-- FIN COLLAPSE -->
+
                             @if ($errors->has('IDautor'))
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $errors->first('IDautor') }}</strong>
@@ -56,7 +50,7 @@
                         <!-- TITULO -->
                         <div class="form-group">
                             <label for="titulo">Título de la canción</label>
-                            <input type="text" name="titulo" class="form-control" placeholder="Ingrese el título" required>
+                            <input type="text" name="titulo" maxlength="60" class="form-control" placeholder="Ingrese el título" required>
                             @if ($errors->has('titulo'))
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $errors->first('titulo') }}</strong>
@@ -66,7 +60,7 @@
                         <!-- LINK LETRA -->
                         <div class="form-group">
                             <label for="linkLetra">Link de la letra</label>
-                            <input type="text" name="linkLetra" class="form-control"
+                            <input type="text" name="linkLetra" maxlength="150" class="form-control"
                                 placeholder="Ingrese el link de la letra">
                             @if ($errors->has('linkLetra'))
                                 <span class="invalid-feedback" role="alert">
@@ -77,7 +71,7 @@
                         <!-- LINK VIDEO -->
                         <div class="form-group">
                             <label for="linkVideo">Link del video</label>
-                            <input type="text" name="linkVideo" class="form-control"
+                            <input type="text" name="linkVideo" maxlength="150" class="form-control"
                                 placeholder="Ingrese el link del video">
                             @if ($errors->has('linkVideo'))
                                 <span class="invalid-feedback" role="alert">
@@ -88,7 +82,7 @@
                         <!-- LINK SPOTITIFY -->
                         <div class="form-group">
                             <label for="linkSpotify">Link del video</label>
-                            <input type="text" name="linkSpotify" class="form-control"
+                            <input type="text" name="linkSpotify" maxlength="150" class="form-control"
                                 placeholder="Ingrese el link de Spotify">
                             @if ($errors->has('linkSpotify'))
                                 <span class="invalid-feedback" role="alert">

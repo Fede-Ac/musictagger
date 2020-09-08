@@ -32,7 +32,7 @@
                         </a>
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="{{ url('/canciones/crear') }}">Agregar cancion</a>
-                            <a class="dropdown-item" href="{{ url('/canciones/mostrar/16') }}">Mostrar Canciones</a>
+                            <a class="dropdown-item" href="{{ url('/canciones/ver/16') }}">Mostrar Canciones</a>
                             <a class="dropdown-item" href="{{ url('/canciones/modificar/16') }}">Modificar cancion</a>
                             <a class="dropdown-item" href="{{ url('/canciones/eliminar/16') }}">Eliminar cancion</a>
                         </div>
@@ -40,7 +40,7 @@
                     <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
                         <!--a class="navbar-brand brand-logo" href="index-2.html"><img src="/melody/images/logo.svg" alt="logo"/></a>-->
                         <a class="navbar-brand brand-logo-mini"
-                            href="{{ route('usuarios.show', Auth::user()->idUsuario) }}"><img src="" alt="logo" /></a>
+                            href="{{ url('/usuarios/ver/' . Auth::user()->idUsuario) }}"><img src="" alt="logo" /></a>
                     </div>
                     <li class="nav-item dropdown">
                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
