@@ -23,9 +23,9 @@ Route::get('/prueba', 'ControladorPrueba@prueba')->name('prueba');
 //HOME
 Route::get('/home', 'HomeController@index')->name('home');
 
-//USUARIOS VENTANAS
+//USUARIOS VENTANAS //cambiar por rutas a controladores
 
-Route::get('/usuarios/{id}', function () {   
+Route::get('/usuarios/ver/{id}', function () {   
     return view('usuarios.show');
 })->name('usuarios.show')->where('id','[0-9]+');
 
@@ -49,3 +49,28 @@ Route::post('/usuarios/borrar/f/{id}', 'CRUDusuariosControlador@destroy')->name(
 
 //CANCIONES
 
+Route::get('/canciones/crear', 'ControladorCancion@create');
+
+Route::put('/usuarios/guardar', 'ControladorCancion@store');
+
+Route::get('/canciones/mostrar/{id}', 'ControladorCancion@show');
+
+Route::put('/canciones/modificar/{id}', 'ControladorCancion@edit');
+
+Route::post('/canciones/eliminar/{id}', 'ControladorCancion@delete');
+
+//FOOTER
+Route::get('/privacidad', function () {
+    return view('privacidad');
+});
+Route::get('/conocenos', function () {   
+    return view('conocenos');
+});
+Route::get('/contacto', function () {   
+    return view('contacto');
+});
+Route::get('/cookies', function () {   
+    return view('cookies');
+});
+
+//

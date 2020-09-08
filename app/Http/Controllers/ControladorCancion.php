@@ -6,18 +6,19 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Cancion;
+use App\Models\Autor;
 
 //END IMPORT
 
 
 class ControladorCancion extends Controller
 {
-    /*
+    
     public function __construct()
     {
         $this->middleware('auth');
     }
-    */
+    
 
     public function index()
     {
@@ -30,13 +31,17 @@ class ControladorCancion extends Controller
 
     public function create()
     {
-        //
+        
+        $autores = Autor::all();
+        //dd($autores);
+        return view('canciones.create')->with('autores', $autores);
+
     }
 
     public function store(Request $request)
     {
         $canciones = new Cancion;
-
+        $canciones->IDautor = $request->IDautor;
         $canciones->titulo = $request->titulo;
         $canciones->linkLetra = $request->linkLetra;
         $canciones->linkVideo = $request->linkVideo;
@@ -47,13 +52,22 @@ class ControladorCancion extends Controller
         return redirect('/home');
     }
 
-    public function show($IDcancion)
+    public function show()//$IDcancion
     {
-        $canciones = Canciones::findOrFail($IDcancion);
-        //return view('usuarios.show', compact('user'));
+        $canciones = Cancion::all();
+        //$canciones = Canciones::findOrFail($IDcancion);
+        //dd($autores);
+        return view('canciones.show')->with('canciones', $canciones);
 
     }
+    public function showone($IDcancion)//
+    {
+        $cancionesone = Cancion::findOrFail($IDcancion);
+        //alldd($canciones);
+        return view('canciones.show')->with('cancionesone', $cancionesone);
 
+    }
+    
     public function edit($IDcancion)
     {
         $canciones = Cancion::findOrFail($IDcancion);

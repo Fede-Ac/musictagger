@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-10">
             <div class="card">
                 <div class="card-header">
                     <!-- TITULO -->
@@ -19,7 +19,7 @@
 
                 <div class="card-footer text-muted">
                     <!-- BOTON EDITAR -->
-                    <a href="{{ route('usuarios.edit', Auth::user()->idUsuario) }}" class="btn btn-primary">Editar Perfil</a>                    
+                    <a href="{{ url('/usuarios/modificar/' . Auth::user()->idUsuario) }}" class="btn btn-primary">Editar Perfil</a>                    
                 </div>
             </div>
         </div>

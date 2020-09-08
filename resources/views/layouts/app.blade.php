@@ -19,6 +19,14 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+    <style>
+        html,
+        body {
+            background-color: black;       
+            font-family: 'Verdana', sans-serif;
+        }
+    </style>
 </head>
 <body>
     <div class="bg-dark"> 

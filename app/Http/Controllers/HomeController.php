@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Cancion;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -16,7 +17,6 @@ class HomeController extends Controller
     {
         $this->middleware('auth');
     }
-
     /**
      * Show the application dashboard.
      *
@@ -24,8 +24,10 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $canciones = Cancion::orderBy('id', 'ASC')->paginate(7);
-
+        $canciones = DB::table('cancion')->get();
+        $listaReproduccion = DB::table('autor')->get();
+        //$canciones = Cancion::orderBy('IDcancion', 'ASC');//->paginate(7);
+        //dd($canciones);
         return view("home")->with('canciones', $canciones);
     }
 }

@@ -11,12 +11,13 @@
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
 
-    <!-- Styles -->
+    <!-- Styles background-image: url("https://www.softzone.es/app/uploads-softzone.es/2019/10/Mesa-de-mezclas-DJ.jpg");-->
     <style>
         html,
         body {
-            background-image: url("https://www.softzone.es/app/uploads-softzone.es/2019/10/Mesa-de-mezclas-DJ.jpg");
-            color: #636b6f;
+            background-color: black;
+
+            color: white;
             font-family: 'Raleway', sans-serif;
             font-weight: 100;
             height: 100vh;
@@ -68,32 +69,54 @@
             margin-bottom: 30px;
         }
 
+        .cabecera {
+            height: 60px;
+        }
+
     </style>
 </head>
 
 <body>
-    <div class="flex-center position-ref full-height">
+
+    <div class="cabecera">
         @if (Route::has('login'))
             <div class="top-right links">
                 @auth
-                    <a href="{{ url('/home') }}">Perfil</a>
+                    <a href="{{ url('/home') }}">Home</a>
                 @else
                     <a href="{{ route('login') }}">Iniciar sesión</a>
                     <a href="{{ route('register') }}">Registrarse</a>
                 @endauth
             </div>
         @endif
+    </div>
 
-        <div class="main-panel">
-            <div class="content">
-                <div class="title m-b-md ">
-                    Bienvenido a MusicTagger
+    <div class="container-fluid ">
+        <div class="card" style="width: 50%;">
+            <img class="card-img-top" src="{{ asset('images/welcome-calificar.jpeg') }}" alt="Card image cap">
+                <div class="card-body ">
+                    <p class="card-text "><strong>Califica tus canciones</strong>
+                    </p>
                 </div>
+        </div>
+
+
+
+        <br>
+
+        <div class="card" style="width: 50%;">
+            <img class="card-img-top" src="{{ asset('images/welcome-listacanciones.png') }}" alt="Card image cap">
+            <div class="card-body">
+                <p class="card-text"><strong>Has lista de tus canciones favoritas</strong>
+                </p>
             </div>
         </div>
-    </div>
-    <div class="panel-footer">
+
+    </div><!-- fin container-fluid -->
+
+    <div class="card-footer">
         @include('layouts.footer')
     </div>
 </body>
+
 </html>

@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-10">
             <div class="card">
                 <div class="card-header">
                     <!-- TITULO -->
@@ -18,7 +18,7 @@
                             <input type="email" name="email"
                                 class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" id="email"
                                 aria-describedby="emailHelp" placeholder="Ingrese correo electrónico"
-                                value="{{ Auth::user()->email }}">
+                                value="{{ Auth::user()->email }}" required>
                             @if ($errors->has('email'))
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $errors->first('email') }}</strong>
@@ -29,7 +29,7 @@
                             <!-- NOMBRE -->
                             <label for="nombre">Nombre</label>
                             <input type="text" name="name" class="form-control" id="nombre"
-                                value="{{ Auth::user()->nombre }}" placeholder="Ingrese su nombre">
+                                value="{{ Auth::user()->nombre }}" placeholder="Ingrese su nombre" required>
                             @if ($errors->has('name'))
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $errors->first('name') }}</strong>
@@ -41,7 +41,7 @@
                             <label class="date" for="exampleCheck1">Fecha de nacimiento</label>
                             <input type="date" name="fechaNac"
                                 class="form-control{{ $errors->has('date') ? ' is-invalid' : '' }}" id="date"
-                                value="{{ Auth::user()->fechaNac }}">
+                                value="{{ Auth::user()->fechaNac }}" required>
                             @if ($errors->has('date'))
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $errors->first('date') }}</strong>
@@ -66,6 +66,7 @@
                     </form>
                 </div>
             </div>
+            <br>           
         </div>
     </div>
     @if (count($errors) > 0)

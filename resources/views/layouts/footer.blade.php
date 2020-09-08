@@ -1,26 +1,13 @@
 <footer class="footer">
-    <div class="container-fluid">
+    <br>
+    <div class="container-fluid css-footer"><!-- clase nueva css-footer -->
         <ul class="nav">
-            <li class="nav-item">
-                <a href="" target="blank" class="nav-link">
-                    {{ __('Conocenos') }}
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="" target="blank" class="nav-link">
-                    {{ __('Contacto') }}
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="#" class="nav-link">
-                    {{ __('') }}
-                </a>
-            </li>
-            <li class="copyright">                
-                &copy; {{ now()->year }} {{ __('Desarrollado por:') }}
-                <a href="" target="_blank">{{ __('#rootSoftware') }}</a>
-                {{ __('Desarrolladores de software') }}.                
-            </li>
+            <span >Copyright &copy; {{ now()->year }} Desarrollado por: <a href="" target="_blank">{{ __('#rootSoftware') }}</a> </span>
+            <a target="_blank" title="Privacidad" href="/privacidad">Privacidad</a>
+            <a target="_blank" title="Contacto" href="/cookies">Cookies</a>
+            <a target="_blank" title="Conocenos" href="/conocenos">Conocenos</a>
+            <a target="_blank" title="Contacto" href="/contacto">Contacto</a>
         </ul>
     </div>
 </footer>
+

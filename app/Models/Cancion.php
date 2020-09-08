@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Cancion extends Model
 {
+    // si hay problemas ver el protected por private
         //nombre de la tabla
         protected $table = 'CANCION';
 
@@ -13,7 +14,7 @@ class Cancion extends Model
         protected $primaryKey = 'IDcancion';
     
         //lista de columnas de la tabla
-        protected $fillable = [ 'titulo', 'linkLetra', 'linkVideo','linkSpotify'];
+        protected $fillable = [ 'IDautor', 'titulo', 'linkLetra', 'linkVideo','linkSpotify'];
         
         //generar las relaciones
         public function cancion_interpreta_autor()
