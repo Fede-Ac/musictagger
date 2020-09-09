@@ -7,6 +7,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Cancion;
 use Illuminate\Support\Facades\DB;
+use App\Post;
 
 //END IMPORT
 
@@ -28,10 +29,10 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $canciones = DB::table('cancion')->get();
-        $listaReproduccion = DB::table('autor')->get();
-        //$canciones = Cancion::orderBy('IDcancion', 'ASC');//->paginate(7);
+        $canciones = DB::table('cancion')->paginate(5);
+        $listasReproduccion = DB::table('autor')->paginate(5);//modificar
+        $etiquetas = DB::table('etiqueta')->paginate(10);
         //dd($canciones);
-        return view("home")->with('canciones', $canciones);
+        return view("home", compact('canciones','listasReproduccion','etiquetas'));
     }
 }

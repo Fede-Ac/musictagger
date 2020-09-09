@@ -34,23 +34,21 @@
                     <!-- no van las canciones aca, modificar por listas -->
                     <thead>
                         <tr>
-                            <th scope="col">Nombre</th>
-                            <th scope="col">Link de la letra</th>
-                            <th scope="col">link del video</th>
-                            <th scope="col">link de Spotify</th>
+                            <th scope="col">IDautor</th>
+                            <th scope="col">nombre</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($canciones as $cancion)
+                        @foreach ($listasReproduccion as $listaReproduccion)
                             <tr>
-                                <td>{{ $cancion->titulo }}</td>
-                                <td>{{ $cancion->linkLetra }}</td>
-                                <td>{{ $cancion->linkVideo }}</td>
-                                <td>{{ $cancion->linkSpotify }}</td>
+                                <td>{{ $listaReproduccion->IDautor }}</td>
+                                <td>{{ $listaReproduccion->nombre }}</td>
                             </tr>
                         @endforeach
                     </tbody>
+
                 </table>
+                {{ $listasReproduccion->links() }}
             </div>
         </div>
         <!-- END TABLE -->
@@ -73,17 +71,11 @@
             </div>
 
             <div class="card-body">
-                <p>
-                    <a class="btn btn-link" data-toggle="collapse" href="#collapseExample" role="button"
-                        aria-expanded="false" aria-controls="collapseExample">
-                        $etiqueta->descripcion
+                @foreach ($etiquetas as $etiqueta)
+                    <a href="https://google.com" class="badge badge-dark">
+                        <button type="button" class="btn btn-dark">{{ $etiqueta->descripcion }}</button>
                     </a>
-                </p>
-                <div class="collapse text-dark" id="collapseExample">
-                    <div class="card card-body">
-                        EXPLICACION DE LA ETIQUETA
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
         <!-- FIN ETIQUETAS POPULARES -->
@@ -108,24 +100,35 @@
                         @foreach ($canciones as $cancion)
                             <tr>
                                 <td><button type="link" class="btn btn-link" data-toggle="modal"
-                                        data-target="#exampleModalCenter">{{ $cancion->titulo }}</button>
+                                        data-target=".bd-example-modal-lg">{{ $cancion->titulo }}</button>
                                     <!-- Modal -->
-                                    <div class="modal fade text-dark" id="exampleModalCenter" tabindex="-1" role="dialog"
-                                        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                                        <div class="modal-dialog modal-dialog-centered" role="document">
+                                    <div class="modal fade bd-example-modal-lg text-dark" tabindex="-1" role="dialog"
+                                        aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog modal-lg">
                                             <div class="modal-content">
                                                 <div class="modal-header">
-                                                    <h5 class="modal-title" id="exampleModalLongTitle">Mas información de {{ $cancion->titulo }}</h5>
+                                                    <h5 class="modal-title" id="exampleModalLongTitle">Mas información de
+                                                        {{ $cancion->titulo }}</h5>
+
                                                     <button type="button" class="close" data-dismiss="modal"
                                                         aria-label="Close">
                                                         <span aria-hidden="true">&times;</span>
                                                     </button>
                                                 </div>
                                                 <div class="modal-body">
-                                                   datos de la canción
+                                                    Título:  {{ $cancion->titulo }}<br>
+                                                    Ver letra en: <a class="nav-link"
+                                                        href="https://www.musica.com/">{{ $cancion->linkLetra }}</a>
+                                                    Ver video en:<br> <iframe width="560" height="315"
+                                                        src="{{ $cancion->linkVideo }}?controls=0" frameborder="0"
+                                                        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                                                        allowfullscreen></iframe><br>
+                                                    escuchar canción en: <a class="nav-link"
+                                                        href="https://www.spotify.com/"> {{ $cancion->linkSpotify }}</a>
                                                 </div>
                                                 <div class="modal-footer">
-                                                    <button type="button" class="btn btn-secondary"data-dismiss="modal">Cerrar</button>                                               
+                                                    <button type="button" class="btn btn-secondary"
+                                                        data-dismiss="modal">Cerrar</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -139,7 +142,9 @@
                         @endforeach
                     </tbody>
                 </table>
+                {{ $canciones->links() }}
             </div>
+
         </div>
         <!-- FIN CANCIONES ALEATORIAS -->
     </div>

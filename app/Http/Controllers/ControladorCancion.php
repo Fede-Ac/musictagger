@@ -40,23 +40,31 @@ class ControladorCancion extends Controller
     {
         $canciones = new Cancion;
 
+        //[ 'IDautor', 'titulo', 'linkLetra', 'linkVideo','linkSpotify'];
+        $valid = Validator::make($request->all(), [
+            
+            //'IDautor' => 'required',
+            'titulo' => 'required',
+            //'linkLetra'    => 'required',
+            //'linkVideo' => 'required',
+            //'linkSpotify' => 'required',
+        ]);
+ 
+        if ($valid->fails())
+        {
+            return redirect()->back()->withInput()->withErrors($valid->errors());
+        }
+        
+
+
         if ($request->IDautor != null) {//si existe el autor
             $canciones->IDautor = $request->IDautor;
         }else{//si no existe el autor
             $autores = new Autor;
             $autores->nombre = $request->autor;
             $autores->save();
-            /*
-            $query= mysql_query("SELECT MAX(id_tabla) AS id FROM tabla");
-            if ($row = mysql_fetch_row($query)) 
-            {
-                $id = trim($row[0]);
-            }
-            */
-
-
-            $autoresfind = Autor::findOrFail($request->autor);//falla
-            dd($autoresfind);
+            $autoresfind = Autor::latest('IDautor')->first();
+            //dd($autoresfind);
             $canciones->IDautor = $autoresfind->IDautor;
         }
 
