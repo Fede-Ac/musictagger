@@ -18,8 +18,8 @@
                                 perfil?</label>
                         </div>
                         <br>
-                        <button type="submit" class="btn btn-primary">Borrar perfil</button>
-                        <button type="button" class="btn btn-danger">Cancelar</button>
+                        <button type="submit" class="btn btn-primary">Darme de baja</button>
+                        <a href="{{ url('/home') }}"> <button type="button" class="btn btn-danger">Cancelar</button> </a>
                     </form>
                 </div>
             </div>

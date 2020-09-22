@@ -13,6 +13,27 @@
                         <!--enctype="multipart/form-data"-->
                         @method('PUT')
                         @csrf
+                        <!-- TITULO -->
+                        <div class="form-group">
+                            <label for="titulo">Título de la canción</label>
+                            <input type="text" name="titulo" maxlength="60" class="form-control"
+                                placeholder="Ingrese el título" required>
+                            @if ($errors->has('titulo'))
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $errors->first('titulo') }}</strong>
+                                </span>
+                            @endif
+                        </div>
+                        <!-- GENERO -->
+                        <div class="form-group">
+                            <label for="titulo">Género de la canción</label>
+                            <select type="text" name="genero" class="form-control" placeholder="Ingrese el genero">
+                                <option value=""> -- Elija un género -- </option>
+                                @foreach ($generos as $genero)
+                                    <option value="{{ $genero->IDgenero }}">{{ $genero->descripcion }}</option>
+                                @endforeach
+                            </select>
+                        </div>
                         <!-- AUTOR -->
                         <div class="form-group">
                             <label for="autor">Autor</label>
@@ -25,18 +46,16 @@
                             <br>
 
                             <!-- COLLAPSE -->
-                            <div id="accordion">
+                            <div id="accordionOne">
                                 <button type="button" class="btn btn-link" data-toggle="collapse" data-target="#collapseOne"
                                     aria-expanded="true" aria-controls="collapseOne">
                                     Añadir un autor
                                 </button>
 
                                 <div id="collapseOne" class="collapse" aria-labelledby="headingOne"
-                                    data-parent="#accordion">
-                                    <div class="card-body">
-                                        <input type="text" name="autor" maxlength="30" class="form-control"
-                                            placeholder="Ingrese un nuevo autor">
-                                    </div>
+                                    data-parent="#accordionOne">
+                                    <input type="text" name="autor" maxlength="30" class="form-control"
+                                        placeholder="Ingrese un nuevo autor">
                                 </div>
                             </div>
                             <!-- FIN COLLAPSE -->
@@ -47,15 +66,37 @@
                                 </span>
                             @endif
                         </div>
-                        <!-- TITULO -->
+                        <!-- ALBUM -->
                         <div class="form-group">
-                            <label for="titulo">Título de la canción</label>
-                            <input type="text" name="titulo" maxlength="60" class="form-control" placeholder="Ingrese el título" required>
-                            @if ($errors->has('titulo'))
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $errors->first('titulo') }}</strong>
-                                </span>
-                            @endif
+                            <label for="album">Álbum</label>
+                            <select type="text" name="IDalbum" class="form-control" placeholder="Ingrese el álbum">
+                                <option value=""> -- Elija un álbum -- </option>
+                                @foreach ($albumes as $album)
+                                    <option value="{{ $album->IDalbum }}">{{ $album->nombre }}</option>
+                                @endforeach
+                            </select>
+                            <br>
+                            <!-- COLLAPSE -->
+                            <div id="accordionTree">
+                                <button type="button" class="btn btn-link" data-toggle="collapse"
+                                    data-target="#collapseTree" aria-expanded="true" aria-controls="collapseTree">
+                                    Añadir un Álbum
+                                </button>
+
+                                <div id="collapseTree" class="collapse" aria-labelledby="headingTree"
+                                    data-parent="#accordionTree">
+                                    <label>Nombre</label>
+                                    <input type="text" name="albumNom" maxlength="30" class="form-control"
+                                        placeholder="Nombre del álbum">
+                                        <label>Año del álbum</label>
+                                    <input type="number" name="anio" maxlength="4" class="form-control"
+                                        placeholder="Año de salida del álbum">
+                                        <label>Discrofráfica</label>
+                                    <input type="text" name="discografica" maxlength="30" class="form-control"
+                                        placeholder="Discrofráfica">
+                                </div>
+                            </div>
+                            <!-- FIN COLLAPSE -->
                         </div>
                         <!-- LINK LETRA -->
                         <div class="form-group">
@@ -92,7 +133,7 @@
                         </div>
                         <!-- BOTONES -->
                         <button type="submit" class="btn btn-primary">Añadir canción</button>
-                        <button type="button" class="btn btn-danger">Cancelar</button>
+                        <a href="{{ url('/home') }}"> <button type="button" class="btn btn-danger">Cancelar</button> </a>
                     </form>
                 </div>
             </div>

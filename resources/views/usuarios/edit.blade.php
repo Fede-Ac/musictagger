@@ -18,7 +18,7 @@
                             <input type="email" name="email" maxlength="100"
                                 class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" id="email"
                                 aria-describedby="emailHelp" placeholder="Ingrese correo electrónico"
-                                value="{{ Auth::user()->email }}" required>
+                                value="{{ Auth::user()->email }}" disabled>
                             @if ($errors->has('email'))
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $errors->first('email') }}</strong>
@@ -62,7 +62,7 @@
                         </div>
                         <!-- BOTONES -->
                         <button type="submit" class="btn btn-primary">Actualizar perfil</button>
-                        <button type="button" class="btn btn-danger">Cancelar</button>
+                        <a href="{{ url('/home') }}"> <button type="button" class="btn btn-danger">Cancelar</button> </a>
                     </form>
                 </div>
             </div>

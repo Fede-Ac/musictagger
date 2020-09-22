@@ -15,6 +15,9 @@ class Autor extends Model
     //lista de columnas de la tabla
     protected $fillable = [ 'nombre'];
     
+    //evita que se envia el update_at y created_at
+    public $timestamps = false; 
+
     //generar las relaciones
     public function autor_interpreta_cancion()
     {

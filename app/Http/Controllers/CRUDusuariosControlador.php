@@ -62,10 +62,10 @@ class CRUDusuariosControlador extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($idUsuario)
     {
-        $user = User::findOrFail($id);
-        return view('/usuarios/ver/', compact('user'));
+        $user = User::findOrFail($idUsuario);
+        return view('usuarios.show', compact('user'));
 
     }
 

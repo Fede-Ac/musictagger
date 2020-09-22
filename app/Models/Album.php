@@ -15,6 +15,9 @@ class Album extends Model
     //lista de columnas de la tabla
     protected $fillable = [ 'nombre', 'anio', 'discografica'];
     
+    //evita que se envia el update_at y created_at
+    public $timestamps = false; 
+
     //generar las relaciones
     /*
     public function join()

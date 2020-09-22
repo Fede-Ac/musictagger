@@ -10,7 +10,9 @@
 | contains the "web" middleware group. Now create something great!
 |
  */
+
 //WELCOME
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -29,10 +31,6 @@ Route::get('/prueba', 'ControladorPrueba@prueba')->name('prueba');
 
 //USUARIOS VENTANAS
 
-Route::get('/usuarios/ver/{id}', function () {
-    return view('usuarios.show');
-})->where('id', '[0-9]+');
-
 Route::get('/usuarios/modificar/{id}', function () {
     return view('usuarios.edit');
 })->where('id', '[0-9]+');
@@ -43,9 +41,7 @@ Route::get('/usuarios/borrar/{id}', function () {
 
 //USUARIOS FUNCIONES
 
-//Route::get('/inicio', 'CRUDusuariosControlador@index');
-
-//Route::get('/usuarios/ver/{id}', 'CRUDusuariosControlador@show')->where('id','[0-9]+');
+Route::get('/usuarios/ver/{id}', 'CRUDusuariosControlador@show')->where('id','[0-9]+');
 
 Route::put('/usuarios/modificar/f/{id}', 'CRUDusuariosControlador@update')->where('id', '[0-9]+');
 
@@ -53,15 +49,19 @@ Route::post('/usuarios/borrar/f/{id}', 'CRUDusuariosControlador@destroy')->where
 
 //CANCIONES
 
+Route::get('/canciones/eliminar/{id}', function () {
+    return view('canciones.delete'); 
+})->where('id', '[0-9]+');
+
 Route::get('/canciones/crear', 'ControladorCancion@create');
 
 Route::put('/usuarios/guardar', 'ControladorCancion@store');
 
-Route::get('/canciones/ver/{id}', 'ControladorCancion@show')->where('id', '[0-9]+');
+Route::get('/canciones/ver/{id}', 'ControladorCancion@showone')->where('id', '[0-9]+');
 
-Route::put('/canciones/modificar/{id}', 'ControladorCancion@edit')->where('id', '[0-9]+');
+Route::get('/canciones/modificar/{id}', 'ControladorCancion@edit')->where('id', '[0-9]+');
 
-Route::post('/canciones/eliminar/{id}', 'ControladorCancion@delete')->where('id', '[0-9]+');
+Route::post('/canciones/eliminar/f/{id}', 'ControladorCancion@delete')->where('id', '[0-9]+');
 
 //
 
