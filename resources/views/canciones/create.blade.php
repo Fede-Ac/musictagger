@@ -24,6 +24,7 @@
                                 </span>
                             @endif
                         </div>
+                        
                         <!-- GENERO -->
                         <div class="form-group">
                             <label for="titulo">Género de la canción</label>
@@ -125,6 +126,7 @@
                             <label for="linkSpotify">Link del video</label>
                             <input type="text" name="linkSpotify" maxlength="150" class="form-control"
                                 placeholder="Ingrese el link de Spotify">
+
                             @if ($errors->has('linkSpotify'))
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $errors->first('linkSpotify') }}</strong>

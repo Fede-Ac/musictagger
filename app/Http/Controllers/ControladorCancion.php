@@ -10,7 +10,7 @@ use App\Models\Cancion;
 use App\Models\Genero;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Collection;
+
 //END IMPORT
 
 class ControladorCancion extends Controller
@@ -102,17 +102,19 @@ class ControladorCancion extends Controller
         return view('canciones.show')->with('canciones', $canciones);
     }
     public function showone($IDcancion)
-
     {
-        /*
-        $canciones = DB::select("SELECT cancion.titulo AS 'TITULO', cancion.linkLetra AS 'LETRA', cancion.linkVideo AS 'VIDEO', cancion.linkSpotify AS 'MUSICA', autor.nombre AS 'AUTOR', album.nombre AS 'ALBUM', album.anio AS 'AÑO', album.discografica AS 'DISCOGRAFICA', genero.descripcion AS 'GENERO', etiqueta.descripcion AS 'ETIQUETAS' FROM cancion,autor,album,genero,etiqueta,integra,tiene WHERE (tiene.IDcancion = cancion.IDcancion) AND (tiene.IDautor = autor.IDautor) AND (tiene.IDalbum = album.IDalbum) AND (tiene.IDgenero = genero.IDgenero) AND (tiene.IDcancion = integra.IDcancion) AND (integra.IDetiqueta = etiqueta.descripcion) AND (tiene.IDcancion = ?)", [$IDcancion]);
-        */
-        $cancion = new Cancion;
-        $cancion = DB::select("select * from cancion where IDcancion = ?", [$IDcancion]);
-        $colCancion = collect($cancion);
+
+        $cancion = DB::select("SELECT cancion.titulo AS 'TITULO', cancion.linkLetra AS 'LETRA', cancion.linkVideo AS 'VIDEO', cancion.linkSpotify AS 'MUSICA', autor.nombre AS 'AUTOR', album.nombre AS 'ALBUM', album.anio AS 'AÑO', album.discografica AS 'DISCOGRAFICA', genero.descripcion AS 'GENERO', etiqueta.descripcion AS 'ETIQUETAS'
+        FROM cancion INNER JOIN interpreta on cancion.IDcancion=interpreta.IDcancion INNER JOIN autor ON interpreta.IDautor=autor.IDautor INNER JOIN pertenece ON interpreta.IDcancion=pertenece.IDcancion INNER JOIN album ON pertenece.IDalbum=album.IDalbum INNER JOIN tiene ON pertenece.IDcancion=tiene.IDcancion INNER JOIN genero ON tiene.IDgenero=genero.IDgenero INNER JOIN integra ON tiene.IDcancion=integra.IDcancion INNER JOIN etiqueta ON integra.IDetiqueta=etiqueta.IDetiqueta
+        WHERE cancion.IDcancion=?;", [$IDcancion]);//BUSCAR SI ALGUN VALOR ES "" Y CAMBIARLO POR NULL PARA QUE SALGA DESCONOCIDO AL MOSTRAR
+
+        //$cancion = new Cancion;
+        //$cancion = DB::select("select * from cancion where IDcancion = ?", [$IDcancion]);
+       
+        //$cancion = collect($canciones)->filter()->all();
         //$canciones = Cancion::findOrFail($IDcancion);
         //dd($cancion);
-        return view('canciones.showone', compact('colCancion'));
+        return view('canciones.showone', compact('cancion'));
     }
 
     public function edit($IDcancion)
