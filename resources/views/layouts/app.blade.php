@@ -18,8 +18,8 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
 
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet"><!-- BOOSTRAP -->
+    
     <style>
         html,
         body {
@@ -30,18 +30,26 @@
 </head>
 <body>
     <div class="bg-dark"> 
-              
-        @include('layouts.navbars.navbar')<!--barra superior-->
+
+        <!-- CABECERA -->
+        @include('layouts.navbars.navbar')
+        <!-- FIN CABECERA -->
+
+        <!-- CONTENIDO -->
         <main class="py-4">       
             <div class="main-panel">
                 <div class="content">
-                    @yield('content')<!-- contenido -->
+                    @yield('content')
                 </div>                               
             </div>
         </main>
+        <!-- FIN CONTENIDO -->
+
+        <!-- FOOTER -->
         <div class="panel-footer text-white">
-            @include('layouts.footer')<!-- pie de pagina -->
+            @include('layouts.footer')
         </div>
+        <!-- FIN FOOTER -->
     </div>
 </body>
 </html>

@@ -8,9 +8,8 @@
                 <!-- INFORMACIÓN BÁSICA -->
                 <img src="{{ asset('images/not-found-image.jpg') }}" alt="Carátula" class="img-thumbnail ml"
                     style="width: 300px;">
-
                 <ul class="list-group list-group-flush mr">
-                    <li class="list-group-item">Título</li>
+                <li class="list-group-item">Título {{collect([$colCancion])->get('#items.array')}}</li>
                     <li class="list-group-item">Artista</li>
                     <li class="list-group-item">Etiqueta</li>
                     <li class="list-group-item">Año</li>
@@ -19,18 +18,18 @@
                 <!-- FIN INFORMACIÓN BÁSICA -->
 
                 <!-- INFORMACIÓN ADICIONAL -->
-                    <p>
-                        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseExample"
-                            aria-expanded="false" aria-controls="collapseExample">
-                            Ver mas datos
-                        </button>
-                    </p>
-                    <div class="collapse show" id="collapseExample">
-                        <ul class="list-group list-group-flush mr">
-                            <li class="list-group-item">dato 1</li>
-                            <li class="list-group-item">dato 2</li>
-                        </ul>
-                    </div>
+                <p>
+                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseExample"
+                        aria-expanded="false" aria-controls="collapseExample">
+                        Ver mas datos
+                    </button>
+                </p>
+                <div class="collapse show" id="collapseExample">
+                    <ul class="list-group list-group-flush mr">
+                        <li class="list-group-item">dato 1</li>
+                        <li class="list-group-item">dato 2</li>
+                    </ul>
+                </div>
                 <!-- FIN INFORMACIÓN ADICIONAL -->
 
                 <!-- RELACIONADOS -->

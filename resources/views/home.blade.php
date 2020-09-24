@@ -154,6 +154,8 @@
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn btn-secondary"
                                                             data-dismiss="modal">Cerrar</button>
+                                                            <a href="{{ url('/canciones/ver/' . $cancion->IDcancion) }}"><button type="button" class="btn btn-primary"
+                                                            data-dismiss="modal">Ver mas detalles</button></a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -163,6 +165,8 @@
                                     <td>{{ $cancion->linkLetra }}</td>
                                     <td>{{ $cancion->linkVideo }}</td>
                                     <td>{{ $cancion->linkSpotify }}</td>
+                                    <td><a href="{{ url('/canciones/ver/' . $cancion->IDcancion) }}"><button type="button" class="btn btn-primary"
+                                        data-dismiss="modal">Mas detalles</button></a></td>
                                 </tr>
                             @endforeach
                         </tbody>

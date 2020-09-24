@@ -10,7 +10,7 @@ use App\Models\Cancion;
 use App\Models\Genero;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-
+use Illuminate\Support\Collection;
 //END IMPORT
 
 class ControladorCancion extends Controller
@@ -104,14 +104,21 @@ class ControladorCancion extends Controller
     public function showone($IDcancion)
 
     {
-        $cancionesone = Cancion::findOrFail($IDcancion);
-        //alldd($canciones);
-        return view('canciones.showone')->with('cancionesone', $cancionesone);
+        /*
+        $canciones = DB::select("SELECT cancion.titulo AS 'TITULO', cancion.linkLetra AS 'LETRA', cancion.linkVideo AS 'VIDEO', cancion.linkSpotify AS 'MUSICA', autor.nombre AS 'AUTOR', album.nombre AS 'ALBUM', album.anio AS 'AÑO', album.discografica AS 'DISCOGRAFICA', genero.descripcion AS 'GENERO', etiqueta.descripcion AS 'ETIQUETAS' FROM cancion,autor,album,genero,etiqueta,integra,tiene WHERE (tiene.IDcancion = cancion.IDcancion) AND (tiene.IDautor = autor.IDautor) AND (tiene.IDalbum = album.IDalbum) AND (tiene.IDgenero = genero.IDgenero) AND (tiene.IDcancion = integra.IDcancion) AND (integra.IDetiqueta = etiqueta.descripcion) AND (tiene.IDcancion = ?)", [$IDcancion]);
+        */
+        $cancion = new Cancion;
+        $cancion = DB::select("select * from cancion where IDcancion = ?", [$IDcancion]);
+        $colCancion = collect($cancion);
+        //$canciones = Cancion::findOrFail($IDcancion);
+        //dd($cancion);
+        return view('canciones.showone', compact('colCancion'));
     }
 
     public function edit($IDcancion)
     {
         $cancion = Cancion::findOrFail($IDcancion);
+        dd($cancion);
         return view('canciones.edit', compact('cancion'));
     }
 

@@ -31,10 +31,10 @@
                             canciones <span class="caret"></span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="{{ url('/canciones/crear') }}">Agregar cancion</a>
-                            <a class="dropdown-item" href="{{ url('/canciones/ver/16') }}">Mostrar Canciones</a>
-                            <a class="dropdown-item" href="{{ url('/canciones/modificar/16') }}">Modificar cancion</a>
-                            <a class="dropdown-item" href="{{ url('/canciones/eliminar/16') }}">Eliminar cancion</a>
+                            <a class="dropdown-item" href="{{ url('/canciones/crear') }}">Agregar canción</a>
+                            <a class="dropdown-item" href="{{ url('/canciones/ver/16') }}">Mostrar Canción</a>
+                            <a class="dropdown-item" href="{{ url('/canciones/modificar/16') }}">Modificar canción</a>
+                            <a class="dropdown-item" href="{{ url('/canciones/eliminar/16') }}">Eliminar canción</a>
                         </div>
                     </li>
                     <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">

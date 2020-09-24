@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="{{ app()->getLocale() }}">
+<html lang="{{ app()->getLocale() }}"><!-- CAMBIAR A ESPAÑOL -->
 
 <head>
     <meta charset="utf-8">
@@ -11,12 +11,10 @@
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
 
-    <!-- Styles background-image: url("https://www.softzone.es/app/uploads-softzone.es/2019/10/Mesa-de-mezclas-DJ.jpg");-->
     <style>
         html,
         body {
             background-color: black;
-
             color: white;
             font-family: 'Raleway', sans-serif;
             font-weight: 100;
@@ -77,7 +75,7 @@
 </head>
 
 <body>
-
+    <!-- CABECERA -->
     <div class="cabecera">
         @if (Route::has('login'))
             <div class="top-right links">
@@ -90,20 +88,18 @@
             </div>
         @endif
     </div>
+    <!-- FIN CABECERA -->
 
-    <div class="container-fluid ">
+    <!-- CONTENIDO -->
+    <div class="container-fluid">
         <div class="card" style="width: 50%;">
             <img class="card-img-top" src="{{ asset('images/welcome-calificar.jpeg') }}" alt="Card image cap">
-                <div class="card-body ">
-                    <p class="card-text "><strong>Califica tus canciones</strong>
-                    </p>
-                </div>
+            <div class="card-body ">
+                <p class="card-text "><strong>Califica tus canciones</strong>
+                </p>
+            </div>
         </div>
-
-
-
         <br>
-
         <div class="card" style="width: 50%;">
             <img class="card-img-top" src="{{ asset('images/welcome-listacanciones.png') }}" alt="Card image cap">
             <div class="card-body">
@@ -111,12 +107,14 @@
                 </p>
             </div>
         </div>
-
     </div><!-- fin container-fluid -->
+    <!-- FIN CONTENIDO -->
 
+    <!-- FOOTER -->
     <div class="card-footer">
         @include('layouts.footer')
     </div>
+    <!-- FIN FOOTER -->
 </body>
 
 </html>
