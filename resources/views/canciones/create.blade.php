@@ -123,7 +123,7 @@
                         </div>
                         <!-- LINK SPOTITIFY -->
                         <div class="form-group">
-                            <label for="linkSpotify">Link del video</label>
+                            <label for="linkSpotify">Link de Spotify</label>
                             <input type="text" name="linkSpotify" maxlength="150" class="form-control"
                                 placeholder="Ingrese el link de Spotify">
 
@@ -132,6 +132,10 @@
                                     <strong>{{ $errors->first('linkSpotify') }}</strong>
                                 </span>
                             @endif
+                        </div>
+                        <div class="form-group invisible">
+                            <input type="text" name="user" maxlength="150" class="form-control"
+                            value="{{ Auth::user()->idUsuario }}">
                         </div>
                         <!-- BOTONES -->
                         <button type="submit" class="btn btn-primary">Añadir canción</button>

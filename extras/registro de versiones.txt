@@ -1,0 +1,29 @@
+versión v1.0
+Ambiente creado
+Registro de usuario creado y funcional
+Login creado y funcional
+Mostrar datos de usuario
+Actualizar datos de usuario funcional
+Eliminar usuario funcional
+
+versión v1.1
+Rutas coregidas
+Vista home mejorada
+
+versión v1.2.0
+Modelos actualizados
+Añadido archivos extras del proyecto a la carpeta
+Añadir cancion (solo autor y cancion)
+
+versión v1.2.1
+Solucionado error en git con la carpeta vendors
+Mejoras graficas en welcome
+
+versión v1.3.0
+Mostrar cancion funcional
+Añadir canción ahora permite asignarle un álbum y un género
+
+versión v1.3.1
+vista welcome mejorada
+corregido un error que ocacionaba que no se añadan las canciones correctamente
+registro de versiones añadido a la carpeta extras

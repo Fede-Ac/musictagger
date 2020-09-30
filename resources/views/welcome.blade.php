@@ -1,15 +1,19 @@
 <!doctype html>
-<html lang="{{ app()->getLocale() }}"><!-- CAMBIAR A ESPAÑOL -->
+<html lang="{{ app()->getLocale() }}">
+<!-- CAMBIAR A ESPAÑOL -->
 
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <link rel="shortcut icon" href="{{ asset('images/logochico.png') }}" /><!-- arreglar -->
+
     <title>MusicTagger</title>
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
+
 
     <style>
         html,
@@ -70,8 +74,16 @@
         .cabecera {
             height: 60px;
         }
-
+        .alto{
+        height: 180px;
+      }
+      .flex-container {
+            display: flex;
+            justify-content: center;
+                      }
+                
     </style>
+    
 </head>
 
 <body>
@@ -91,22 +103,46 @@
     <!-- FIN CABECERA -->
 
     <!-- CONTENIDO -->
+    <div class="container alto">
+        <div class="row">
+      <div class="col-md-4">
+          <img class="img-fluid" src="images/logochico.jpg" />
+      </div>
+        </div>
+   </div>
+
     <div class="container-fluid">
-        <div class="card" style="width: 50%;">
-            <img class="card-img-top" src="{{ asset('images/welcome-calificar.jpeg') }}" alt="Card image cap">
-            <div class="card-body ">
-                <p class="card-text "><strong>Califica tus canciones</strong>
-                </p>
+        <div class="row">
+            <div class="col-4">
+            <div class="card" style="width: 500px;">
+                <div class="card-body">
+                  <h1 class="card-title">Etiqueta y califica tus canciones</h1>
+                  <h3 class="card-text">Elige tu propio contenido y disfruta de la experiencia </h3>
+                </div>  
+                </div>
+              </div>
+              
+                            
             </div>
+    </div>
+
+    
+          
+        <div class="flex-container">
+            <div class="row">
+          <img src="images/artistas.jpg" class="rounded mx-auto d-block" alt="...">
+        </div> 
+    </div>  
+
+    <br>
+    <div class="card" style="width: 50%;">
+        <img class="card-img-top" src="{{ asset('images/welcome-listacanciones.png') }}" alt="Card image cap">
+        <div class="card-body">
+            <h1 class="card-title">Crea tu propia playlist</h1>
+                  <h3 class="card-text">Mezcla tus canciones favoritas</h3>
         </div>
-        <br>
-        <div class="card" style="width: 50%;">
-            <img class="card-img-top" src="{{ asset('images/welcome-listacanciones.png') }}" alt="Card image cap">
-            <div class="card-body">
-                <p class="card-text"><strong>Has lista de tus canciones favoritas</strong>
-                </p>
-            </div>
-        </div>
+        
+    </div>
     </div><!-- fin container-fluid -->
     <!-- FIN CONTENIDO -->
 
