@@ -13,7 +13,7 @@ class Lista extends Model
     protected $primaryKey = 'IDlista';
 
     //lista de columnas de la tabla
-    protected $fillable = ['descripcion', 'publica'];
+    protected $fillable = ['idUsuario','descripcion', 'visitas', 'publica'];
 
     //generar las relaciones
     public function lista_crea_usuario()

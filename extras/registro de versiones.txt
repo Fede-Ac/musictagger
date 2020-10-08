@@ -23,7 +23,13 @@ versión v1.3.0
 Mostrar cancion funcional
 Añadir canción ahora permite asignarle un álbum y un género
 
-versión v1.3.1
+versión v1.3.1 (versión para la entrega 30/9/2020)
 vista welcome mejorada
 corregido un error que ocacionaba que no se añadan las canciones correctamente
 registro de versiones añadido a la carpeta extras
+
+versión v1.4.0
+Mejoras en la accecibilidad
+Mejoras en la verificación de datos del lado del usuario
+Cambios en la BD (añadida la columna fecha a asigna, columna meGusta y noMeGusta a canciones; y visitas a lista)
+Aplicado el estandar para views con boostrap (<div class="container"> <div class="justify-content-center">)

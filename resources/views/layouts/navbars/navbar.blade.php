@@ -32,15 +32,15 @@
                         </a>
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="{{ url('/canciones/crear') }}">Agregar canción</a>
-                            <a class="dropdown-item" href="{{ url('/canciones/ver/16') }}">Mostrar Canción</a>
-                            <a class="dropdown-item" href="{{ url('/canciones/modificar/16') }}">Modificar canción</a>
-                            <a class="dropdown-item" href="{{ url('/canciones/eliminar/16') }}">Eliminar canción</a>
+                            <a class="dropdown-item" href="{{ url('/canciones/ver/1') }}">Mostrar Canción</a>
+                            <a class="dropdown-item" href="{{ url('/canciones/modificar/1') }}">Modificar canción</a>
+                            <a class="dropdown-item" href="{{ url('/canciones/eliminar/1') }}">Eliminar canción</a>
                         </div>
                     </li>
                     <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
                         <!--a class="navbar-brand brand-logo" href="index-2.html"><img src="/melody/images/logo.svg" alt="logo"/></a>-->
                         <a class="navbar-brand brand-logo-mini"
-                            href="{{ url('/usuarios/ver/' . Auth::user()->idUsuario) }}"><img src="" alt="logo" /></a>
+                            href="{{ url('/usuarios/ver/' . Auth::user()->idUsuario) }}"><img src="" alt="..." class="rounded-circle"></a>
                     </div>
                     <li class="nav-item dropdown">
                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"

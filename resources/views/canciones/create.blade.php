@@ -1,8 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
+<div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-10">
+        <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
                     <!-- TITULO -->
@@ -17,7 +18,7 @@
                         <div class="form-group">
                             <label for="titulo">Título de la canción</label>
                             <input type="text" name="titulo" maxlength="60" class="form-control"
-                                placeholder="Ingrese el título" required>
+                                placeholder="Ingrese el título" required autofocus>
                             @if ($errors->has('titulo'))
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $errors->first('titulo') }}</strong>
@@ -28,7 +29,7 @@
                         <!-- GENERO -->
                         <div class="form-group">
                             <label for="titulo">Género de la canción</label>
-                            <select type="text" name="genero" class="form-control" placeholder="Ingrese el genero">
+                            <select type="text" name="genero" class="form-control" placeholder="Ingrese el genero" required>
                                 <option value=""> -- Elija un género -- </option>
                                 @foreach ($generos as $genero)
                                     <option value="{{ $genero->IDgenero }}">{{ $genero->descripcion }}</option>
@@ -90,7 +91,7 @@
                                     <input type="text" name="albumNom" maxlength="30" class="form-control"
                                         placeholder="Nombre del álbum">
                                         <label>Año del álbum</label>
-                                    <input type="number" name="anio" maxlength="4" class="form-control"
+                                    <input type="number" name="anio" maxlength="4" minlength="4" class="form-control" min="1900" max="2021" 
                                         placeholder="Año de salida del álbum">
                                         <label>Discrofráfica</label>
                                     <input type="text" name="discografica" maxlength="30" class="form-control"
@@ -102,8 +103,8 @@
                         <!-- LINK LETRA -->
                         <div class="form-group">
                             <label for="linkLetra">Link de la letra</label>
-                            <input type="text" name="linkLetra" maxlength="150" class="form-control"
-                                placeholder="Ingrese el link de la letra">
+                            <input type="url" name="linkLetra" maxlength="150" class="form-control"
+                                placeholder="Ingrese el link de la letra" title="Ingrese una URL con el formato">
                             @if ($errors->has('linkLetra'))
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $errors->first('linkLetra') }}</strong>
@@ -113,7 +114,7 @@
                         <!-- LINK VIDEO -->
                         <div class="form-group">
                             <label for="linkVideo">Link del video</label>
-                            <input type="text" name="linkVideo" maxlength="150" class="form-control"
+                            <input type="url" name="linkVideo" maxlength="150" class="form-control"
                                 placeholder="Ingrese el link del video">
                             @if ($errors->has('linkVideo'))
                                 <span class="invalid-feedback" role="alert">
@@ -124,7 +125,7 @@
                         <!-- LINK SPOTITIFY -->
                         <div class="form-group">
                             <label for="linkSpotify">Link de Spotify</label>
-                            <input type="text" name="linkSpotify" maxlength="150" class="form-control"
+                            <input type="url" name="linkSpotify" maxlength="150" class="form-control"
                                 placeholder="Ingrese el link de Spotify">
 
                             @if ($errors->has('linkSpotify'))
@@ -133,6 +134,17 @@
                                 </span>
                             @endif
                         </div>
+                        <!-- ETIQUETAS -->
+                        <div class="form-group">
+                            <label for="Etiqueta">Etiqueta</label>
+                            <select type="text" name="idEtiqueta" class="form-control" placeholder="Seleccióne una etiqueta">
+                                <option value=""> -- Elija una etiqueta -- </option>
+                                @foreach ($etiquetas as $etiqueta)
+                                    <option value="{{ $etiqueta->IDetiqueta }}">{{ $etiqueta->descripcion }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <!-- IDUSUARIO (INVISIBLE) -->
                         <div class="form-group invisible">
                             <input type="text" name="user" maxlength="150" class="form-control"
                             value="{{ Auth::user()->idUsuario }}">
@@ -155,5 +167,5 @@
             </ul>
         </div><!-- ./alert -->
     @endif
-
+</div>
 @endsection

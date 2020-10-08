@@ -1,9 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-
-        
+    <div class="container">
         <div class="justify-content-center">
+            <div class="col-md-14">
             <!-- CAROUSEL -->
             <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
                 <div class="carousel-inner">
@@ -36,15 +36,15 @@
                         <!-- no van las canciones aca, modificar por listas -->
                         <thead>
                             <tr>
-                                <th scope="col">IDautor</th>
-                                <th scope="col">nombre</th>
+                                <th scope="col">idUsuario</th>
+                                <th scope="col">Descripción</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach ($listasReproduccion as $listaReproduccion)
                                 <tr>
-                                    <td>{{ $listaReproduccion->IDautor }}</td>
-                                    <td>{{ $listaReproduccion->nombre }}</td>
+                                    <td>{{ $listaReproduccion->idUsuario }}</td>
+                                    <td>{{ $listaReproduccion->descripcion }}</td>
                                 </tr>
                             @endforeach
                         </tbody>
@@ -61,13 +61,13 @@
                     Listas de reproducción populares
                 </div>
                 <div class="card-body">
-                    <div class="d-flex flex-row">
+                    <!--hacer que si son mas de X se muestra una flecha-->
                         <img class="p-2" src="{{ asset('images/not-found-image.jpg') }}" />
                         <img class="p-2" src="{{ asset('images/not-found-image.jpg') }}" />
                         <img class="p-2" src="{{ asset('images/not-found-image.jpg') }}" />
                         <img class="p-2" src="{{ asset('images/not-found-image.jpg') }}" />
                         <img class="p-2" src="{{ asset('images/not-found-image.jpg') }}" />
-                    </div>
+                    
                 </div>
             </div>
             <!-- FIN LISTAS POPULARES -->
@@ -145,7 +145,8 @@
                                                         Ver letra en: <a class="nav-link"
                                                             href="https://www.musica.com/">{{ $cancion->linkLetra }}</a>
                                                         Ver video en:<br> <iframe width="560" height="315"
-                                                            src="https://www.youtube.com/embed/{{ substr($cancion->linkVideo, -11) }}?controls=0" frameborder="0"
+                                                            src="https://www.youtube.com/embed/{{ substr($cancion->linkVideo, -11) }}?controls=0"
+                                                            frameborder="0"
                                                             allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
                                                             allowfullscreen></iframe><br>
                                                         escuchar canción en: <a class="nav-link"
@@ -154,8 +155,9 @@
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn btn-secondary"
                                                             data-dismiss="modal">Cerrar</button>
-                                                            <a href="{{ url('/canciones/ver/' . $cancion->IDcancion) }}"><button type="button" class="btn btn-primary"
-                                                            data-dismiss="modal">Ver mas detalles</button></a>
+                                                        <a href="{{ url('/canciones/ver/' . $cancion->IDcancion) }}"><button
+                                                                type="button" class="btn btn-primary"
+                                                                data-dismiss="modal">Ver mas detalles</button></a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -165,8 +167,8 @@
                                     <td>{{ $cancion->linkLetra }}</td>
                                     <td>{{ $cancion->linkVideo }}</td>
                                     <td>{{ $cancion->linkSpotify }}</td>
-                                    <td><a href="{{ url('/canciones/ver/' . $cancion->IDcancion) }}"><button type="button" class="btn btn-primary"
-                                        data-dismiss="modal">Mas detalles</button></a></td>
+                                    <td><a href="{{ url('/canciones/ver/' . $cancion->IDcancion) }}"><button type="button"
+                                                class="btn btn-primary" data-dismiss="modal">Mas detalles</button></a></td>
                                 </tr>
                             @endforeach
                         </tbody>
@@ -176,7 +178,7 @@
 
             </div>
             <!-- FIN CANCIONES ALEATORIAS -->
-        
-        
+            </div>
+        </div>
     </div>
 @endsection

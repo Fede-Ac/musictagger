@@ -14,7 +14,10 @@ class Cancion extends Model
     protected $primaryKey = 'IDcancion';
 
     //lista de columnas de la tabla
-    protected $fillable = ['IDautor', 'titulo', 'linkLetra', 'linkVideo', 'linkSpotify'];
+    protected $fillable = ['IDautor', 'titulo', 'linkLetra', 'linkVideo', 'linkSpotify', 'meGusta', 'noMeGusta'];
+
+    //evita que se envia el update_at y created_at (puede que lo saque de cancion)
+    public $timestamps = false;
 
     //generar las relaciones
     public function cancion_interpreta_autor()

@@ -61,7 +61,10 @@ Route::get('/canciones/ver/{id}', 'ControladorCancion@showone')->where('id', '[0
 
 Route::get('/canciones/modificar/{id}', 'ControladorCancion@edit')->where('id', '[0-9]+');
 
-Route::post('/canciones/eliminar/f/{id}', 'ControladorCancion@delete')->where('id', '[0-9]+');
+Route::get('/canciones/modificar/meGusta/{id}', 'ControladorCancion@meGusta')->where('id', '[0-9]+');
+
+Route::get('/canciones/modificar/noMeGusta/{id}', 'ControladorCancion@noMeGusta')->where('id', '[0-9]+');
+
 
 //
 

@@ -30,9 +30,10 @@ class HomeController extends Controller
     public function index()
     {
         $canciones = DB::table('cancion')->paginate(5);
-        $listasReproduccion = DB::table('autor')->paginate(5);//modificar
+        $listasReproduccion = DB::table('lista')->paginate(5);//modificar
         $etiquetas = DB::table('etiqueta')->paginate(10);
         $generos = DB::table('genero')->paginate(10);
+
         //dd($canciones);
         return view("home", compact('canciones','listasReproduccion','etiquetas','generos'));
     }

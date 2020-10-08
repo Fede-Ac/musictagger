@@ -1,0 +1,9 @@
+//vaciar canciones
+
+DELETE FROM `integra`;
+DELETE FROM `asigna`;
+DELETE FROM `tiene`;
+DELETE FROM `pertenece`;
+DELETE FROM `interpreta`;
+DELETE FROM `cancion`;
+
