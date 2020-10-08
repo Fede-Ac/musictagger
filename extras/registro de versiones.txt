@@ -33,3 +33,4 @@ Mejoras en la accecibilidad
 Mejoras en la verificación de datos del lado del usuario
 Cambios en la BD (añadida la columna fecha a asigna, columna meGusta y noMeGusta a canciones; y visitas a lista)
 Aplicado el estandar para views con boostrap (<div class="container"> <div class="justify-content-center">)
+calificar canciónes semi funcional
