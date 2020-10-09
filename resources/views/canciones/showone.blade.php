@@ -24,23 +24,26 @@
                                 <li class="list-group-item">Género {{ collect($cancion[0])->get('GENERO', 'Desconocido') }}
                                 </li>
                                 <li class="list-group-item">Calificación
-                                    
-                                    <a href="{{ url('/canciones/modificar/meGusta/1') }}"><span class="badge badge-pill badge-success">Me gusta
-                                        {{ collect($cancion[0])->get('MEGUSTA', 'Desconocido') }}</span></a>
-                                        <a href="{{ url('/canciones/modificar/noMeGusta/1') }}"><span class="badge badge-pill badge-danger">No me gusta
-                                        {{ collect($cancion[0])->get('NOMEGUSTA', 'Desconocido') }}</span></a>
+                                    <a
+                                        href="{{ url('/canciones/modificar/meGusta/' . collect($cancion[0])->get('ID') . '/' . Auth::user()->idUsuario) }}">
 
-                                   
+                                        <span class="badge badge-pill badge-success">Me gusta
+                                            {{ collect($cancion[0])->get('MEGUSTA', 'Desconocido') }}</span></a>
+
+                                    <a
+                                        href="{{ url('/canciones/modificar/noMeGusta/' . collect($cancion[0])->get('ID') . '/' . Auth::user()->idUsuario) }}">
+
+                                        <span class="badge badge-pill badge-danger">No me gusta
+                                            {{ collect($cancion[0])->get('NOMEGUSTA', 'Desconocido') }}</span></a>
                                 </li>
                             </ul>
                         </div>
                     </div>
                     <!--
-                                        collect($cancion)->dump() muestra todo
-                                        var_dump($cancion[0] muestra solo el array
-                                        var_dump($cancion[0]->titulo) muestra el tipo de dato, la cantidad y el dato
-                                        collect($cancion[0])->get('titulo') muestra solo el dato
-                                        -->
+                        collect($cancion)->dump() muestra todo
+                        var_dump($cancion[0] muestra solo el array
+                        var_dump($cancion[0]->titulo) muestra el tipo de dato, la cantidad y el dato
+                        collect($cancion[0])->get('titulo') muestra solo el dato -->
                     <!-- FIN INFORMACIÓN BÁSICA -->
 
                     <!-- INFORMACIÓN ADICIONAL -->

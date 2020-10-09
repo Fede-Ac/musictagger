@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 22-09-2020 a las 18:40:53
+-- Tiempo de generación: 09-10-2020 a las 22:52:32
 -- Versión del servidor: 10.4.13-MariaDB
 -- Versión de PHP: 7.4.8
 
@@ -34,16 +34,6 @@ CREATE TABLE `album` (
   `discografica` varchar(30) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Volcado de datos para la tabla `album`
---
-
-INSERT INTO `album` (`IDalbum`, `nombre`, `anio`, `discografica`) VALUES
-(1, 'YHLQMDLG', 2020, ''),
-(2, 'YHLQMDASD', 2019, ''),
-(3, 'SADASDSADGFDBCV', 2018, ''),
-(4, 'JFHSENSFE', 1999, '');
-
 -- --------------------------------------------------------
 
 --
@@ -52,7 +42,8 @@ INSERT INTO `album` (`IDalbum`, `nombre`, `anio`, `discografica`) VALUES
 
 CREATE TABLE `asigna` (
   `idUsuario` int(10) NOT NULL,
-  `IDetiqueta` int(6) NOT NULL
+  `IDetiqueta` int(6) NOT NULL,
+  `fecha` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -63,24 +54,8 @@ CREATE TABLE `asigna` (
 
 CREATE TABLE `autor` (
   `IDautor` int(6) NOT NULL,
-  `nombre` varchar(30) NOT NULL,
-  `updated_at` varchar(100) DEFAULT NULL,
-  `created_at` varchar(100) DEFAULT NULL
+  `nombre` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Volcado de datos para la tabla `autor`
---
-
-INSERT INTO `autor` (`IDautor`, `nombre`, `updated_at`, `created_at`) VALUES
-(1, 'Pedro', NULL, NULL),
-(2, 'arjona', '2020-09-08 22:52:29', '2020-09-08 22:52:29'),
-(3, 'Elvis Presley', '2020-09-08 22:55:21', '2020-09-08 22:55:21'),
-(4, 'John Lennon', '2020-09-08 22:55:47', '2020-09-08 22:55:47'),
-(5, 'Shakira', '2020-09-08 22:56:27', '2020-09-08 22:56:27'),
-(6, 'Beyoncé', '2020-09-08 22:58:16', '2020-09-08 22:58:16'),
-(7, 'Michael Jackson', '2020-09-08 23:05:11', '2020-09-08 23:05:11'),
-(8, 'Ray Charles', '2020-09-08 23:08:38', '2020-09-08 23:08:38');
 
 -- --------------------------------------------------------
 
@@ -95,23 +70,11 @@ CREATE TABLE `cancion` (
   `linkLetra` varchar(150) DEFAULT NULL,
   `linkVideo` varchar(150) DEFAULT NULL,
   `linkSpotify` varchar(150) DEFAULT NULL,
+  `meGusta` int(5) NOT NULL DEFAULT 0,
+  `noMeGusta` int(5) NOT NULL DEFAULT 0,
   `updated_at` varchar(100) DEFAULT NULL,
   `created_at` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Volcado de datos para la tabla `cancion`
---
-
-INSERT INTO `cancion` (`IDcancion`, `IDautor`, `titulo`, `linkLetra`, `linkVideo`, `linkSpotify`, `updated_at`, `created_at`) VALUES
-(16, 1, 'Solo ', 'https://www.musica.com/letras.asp?letra=2281351', 'https://www.youtube.com/watch?v=ALZHF5UqnU4', 'https://open.spotify.com/track/3MEYFivt6bilQ9q9mFWZ4g?si=bjmT_TIdTGC1ABVD_E9eEg\r\n', '2020-08-26 02:05:13', '2020-08-26 02:05:13'),
-(17, 1, 'mañana', NULL, NULL, NULL, '2020-08-26 21:09:59', '2020-08-26 21:09:59'),
-(18, 1, 'te amo', 'w', 'ww', 'www', '2020-09-08 21:42:17', '2020-09-08 21:42:17'),
-(19, 1, 'no se', 'w', 'ww', 'www', '2020-09-08 22:46:17', '2020-09-08 22:46:17'),
-(20, 1, 'no se 2', 'w', 'ww', 'www', '2020-09-08 22:47:34', '2020-09-08 22:47:34'),
-(21, 3, 'no se 8', 'www', 'ww', 'w', '2020-09-08 23:04:14', '2020-09-08 23:04:14'),
-(23, 2, 'nose15', 'w', 'www', 'ww', '2020-09-09 18:42:29', '2020-09-09 18:42:29'),
-(25, 3, 'new age', 'whw', 'wh', 'hw', '2020-09-12 21:30:41', '2020-09-12 21:30:41');
 
 -- --------------------------------------------------------
 
@@ -148,15 +111,6 @@ CREATE TABLE `etiqueta` (
   `IDetiqueta` int(6) NOT NULL,
   `descripcion` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Volcado de datos para la tabla `etiqueta`
---
-
-INSERT INTO `etiqueta` (`IDetiqueta`, `descripcion`) VALUES
-(1, 'Infantil'),
-(4, 'Ofensiva'),
-(5, 'Contenido explicito');
 
 -- --------------------------------------------------------
 
@@ -199,15 +153,6 @@ CREATE TABLE `genero` (
   `descripcion` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Volcado de datos para la tabla `genero`
---
-
-INSERT INTO `genero` (`IDgenero`, `descripcion`) VALUES
-(1, 'Rock'),
-(2, 'POP'),
-(3, 'Reggeton');
-
 -- --------------------------------------------------------
 
 --
@@ -245,6 +190,7 @@ CREATE TABLE `lista` (
   `IDlista` int(6) NOT NULL,
   `idUsuario` int(10) NOT NULL,
   `descripcion` varchar(30) NOT NULL,
+  `visitas` int(5) NOT NULL DEFAULT 0,
   `publica` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -345,20 +291,11 @@ CREATE TABLE `usuario` (
   `nombre` varchar(30) NOT NULL,
   `fechaNac` date NOT NULL,
   `password` varchar(100) NOT NULL,
+  `califico` tinyint(1) NOT NULL,
   `remember_token` varchar(100) DEFAULT NULL,
   `updated_at` varchar(100) DEFAULT NULL,
   `created_at` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Volcado de datos para la tabla `usuario`
---
-
-INSERT INTO `usuario` (`idUsuario`, `email`, `nombre`, `fechaNac`, `password`, `remember_token`, `updated_at`, `created_at`) VALUES
-(3, 'jose@gmail.com', 'jose', '2020-07-31', '$2y$10$sYKYRXHOZf3VFs0uhZ2HnuQ99.xB5dRk66yGw9mGhVKc7SvAkK482', 'XAl0jj67zlSlL7hBV9Rf1xkbmzX2RbSzqjFv1pI5DPPe7RsnYwZaLi8oT2l1', '2020-08-14 20:42:20', '2020-08-14 20:42:20'),
-(4, 'soledad@gmail.com', 'soledad', '2020-08-02', '$2y$10$PXi306pMBJddyABSC9e/LerxKszc3FsHxAtVCQYa6RXTAh7sr9Iiq', 'UBA4CJvIOCPkZKpIVqOCUW4hxUCxNBMr7XWtfOB8M4ELJDoTPvOVWnStAdhW', '2020-08-14 21:02:51', '2020-08-14 21:02:51'),
-(5, 'pedro@gmail.com', 'Pedro', '2020-04-03', '$2y$10$dvASeZzllPa9Fm99PumCwOYWOZBh0GTz/.6LIno7emFJQNQ4p192S', 'OQaXSLRpBtT8u7gAx3bpN2y9wqCvbD8WfxP7bYC9uqSAjuIdgmdDVxUPMBta', '2020-08-20 07:23:50', '2020-08-20 06:52:01'),
-(6, 'alejandra2@gmail.com', 'alejandra dominguez', '2020-06-05', '$2y$10$FhA2NYNzTjehg45SuzF6wO0EUARIWmn81qn7EMhOe3WtHV9Q4xp5a', 'GmQrSQZpg8IN5mmboSOZsBCvsZasAIGU5cWw8ye5TkvDRTj1nfKVcJTt7koH', '2020-08-26 21:08:37', '2020-08-26 21:05:34');
 
 -- --------------------------------------------------------
 
@@ -404,7 +341,7 @@ ALTER TABLE `album`
 -- Indices de la tabla `asigna`
 --
 ALTER TABLE `asigna`
-  ADD PRIMARY KEY (`idUsuario`,`IDetiqueta`),
+  ADD PRIMARY KEY (`idUsuario`,`IDetiqueta`,`fecha`),
   ADD KEY `fk_asigna__etiqueta` (`IDetiqueta`);
 
 --
@@ -571,37 +508,37 @@ ALTER TABLE `usuario_revisor`
 -- AUTO_INCREMENT de la tabla `album`
 --
 ALTER TABLE `album`
-  MODIFY `IDalbum` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `IDalbum` int(6) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `autor`
 --
 ALTER TABLE `autor`
-  MODIFY `IDautor` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `IDautor` int(6) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `cancion`
 --
 ALTER TABLE `cancion`
-  MODIFY `IDcancion` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `IDcancion` int(6) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `etiqueta`
 --
 ALTER TABLE `etiqueta`
-  MODIFY `IDetiqueta` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `IDetiqueta` int(6) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `genero`
 --
 ALTER TABLE `genero`
-  MODIFY `IDgenero` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `IDgenero` int(6) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `lista`
 --
 ALTER TABLE `lista`
-  MODIFY `IDlista` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `IDlista` int(6) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `users`
@@ -613,7 +550,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `idUsuario` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `idUsuario` int(10) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `usuario_administrador`

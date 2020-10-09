@@ -19,7 +19,7 @@ class User extends Authenticatable
     protected $primaryKey = 'idUsuario';
 
     //lista de columnas de la tabla
-    protected $fillable = [ 'email', 'nombre', 'fechaNac', 'password'];
+    protected $fillable = [ 'email', 'nombre', 'fechaNac', 'password', 'califico'];
     
     //generar las relaciones
     
