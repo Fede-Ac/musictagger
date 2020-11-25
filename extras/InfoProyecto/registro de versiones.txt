@@ -39,6 +39,6 @@ versión v1.5.0
 calificar cancion terminado 
 añadido a la BD la columna califico en usuario
 estructura de exras modificada
-
-versión v1.
 welcome mejorada
+
+
