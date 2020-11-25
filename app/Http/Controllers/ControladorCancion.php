@@ -54,7 +54,7 @@ class ControladorCancion extends Controller
         {
         return redirect()->back()->withInput()->withErrors($valid->errors());
         }
-         */
+        */
 
         //INGRESAR UN AUTOR
         if ($request->IDautor != null) { //si existe el autor

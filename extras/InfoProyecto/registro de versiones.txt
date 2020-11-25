@@ -36,6 +36,9 @@ Aplicado el estandar para views con boostrap (<div class="container"> <div class
 calificar canciónes semi funcional
 
 versión v1.5.0
-calificar cancion terminado
+calificar cancion terminado 
 añadido a la BD la columna califico en usuario
 estructura de exras modificada
+
+versión v1.
+welcome mejorada

@@ -32,9 +32,9 @@
                         </a>
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="{{ url('/canciones/crear') }}">Agregar canción</a>
-                            <a class="dropdown-item" href="{{ url('/canciones/ver/1') }}">Mostrar Canción</a>
-                            <a class="dropdown-item" href="{{ url('/canciones/modificar/1') }}">Modificar canción</a>
-                            <a class="dropdown-item" href="{{ url('/canciones/eliminar/1') }}">Eliminar canción</a>
+                            <a class="dropdown-item" href="{{ url('/canciones/ver/7') }}">Mostrar Canción</a>
+                            <a class="dropdown-item" href="{{ url('/canciones/modificar/7') }}">Modificar canción</a>
+                            <a class="dropdown-item" href="{{ url('/canciones/eliminar/7') }}">Eliminar canción</a>
                         </div>
                     </li>
                     <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">

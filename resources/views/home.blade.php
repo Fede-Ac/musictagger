@@ -32,8 +32,10 @@
                     Tus listas de reproducción
                 </div>
                 <div class="card-body">
+                    <div class="table-responsive">
                     <table class="table table-dark">
-                        <!-- no van las canciones aca, modificar por listas -->
+                        <caption class="invisible">Tabla de listas de reproducción</caption><!--Subtitulos-->
+                        
                         <thead>
                             <tr>
                                 <th scope="col">idUsuario</th>
@@ -50,7 +52,9 @@
                         </tbody>
 
                     </table>
+                </div>
                     {{ $listasReproduccion->links() }}
+                    
                 </div>
             </div>
             <!-- END TABLE -->
@@ -111,11 +115,12 @@
                 </div>
 
                 <div class="card-body">
+                    <div class="table-responsive">
                     <table class="table table-dark">
+                        <caption class="invisible">Lista de canciones</caption><!--Subtitulos-->
                         <thead>
                             <tr>
-                                <th scope="col">Nombre</th>
-                                <th scope="col">Link de la letra</th>
+                                <th scope="col">Nombre</th>                                
                                 <th scope="col">link del video</th>
                                 <th scope="col">link de Spotify</th>
                             </tr>
@@ -123,18 +128,18 @@
                         <tbody>
                             @foreach ($canciones as $cancion)
                                 <tr>
-                                    <td><button type="link" class="btn btn-link" data-toggle="modal"
-                                            data-target=".bd-example-modal-lg">{{ $cancion->titulo }}</button>
-                                        <!-- Modal -->
-                                        <div class="modal fade bd-example-modal-lg text-dark" tabindex="-1" role="dialog"
+                                    <td>
+                                        <button type="link" class="btn btn-link" data-toggle="modal"
+                                            data-target=".bd-modal-lg">{{ $cancion->titulo }}</button>
+                                        <!-- Modal  ERROR --> 
+                                        <div class="modal fade bd-modal-lg text-dark" tabindex="-1" role="dialog"
                                             aria-labelledby="myLargeModalLabel" aria-hidden="true">
                                             <div class="modal-dialog modal-lg">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
-                                                        <h5 class="modal-title" id="exampleModalLongTitle">Mas información
+                                                        <h5 class="modal-title">Mas información
                                                             de
                                                             {{ $cancion->titulo }}</h5>
-
                                                         <button type="button" class="close" data-dismiss="modal"
                                                             aria-label="Close">
                                                             <span aria-hidden="true">&times;</span>
@@ -150,23 +155,22 @@
                                                             allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
                                                             allowfullscreen></iframe><br>
                                                         escuchar canción en: <a class="nav-link"
-                                                            href="{{ $cancion->linkSpotify }}"> Link a Spotify</a>
+                                                            href="{{ $cancion->linkSpotify }}"> {{ $cancion->linkSpotify }}</a>
                                                     </div>
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn btn-secondary"
                                                             data-dismiss="modal">Cerrar</button>
-                                                        <a href="{{ url('/canciones/ver/' . $cancion->IDcancion) }}"><button
-                                                                type="button" class="btn btn-primary"
-                                                                data-dismiss="modal">Ver mas detalles</button></a>
+                                                      <a href="{{ url('/canciones/ver/' . $cancion->IDcancion) }}"><button
+                                                            type="botton" class="btn btn-primary"
+                                                                >Ver mas detalles</button></a>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                         <!-- fin Modal -->
-                                    </td>
-                                    <td>{{ $cancion->linkLetra }}</td>
-                                    <td>{{ $cancion->linkVideo }}</td>
-                                    <td>{{ $cancion->linkSpotify }}</td>
+                                    </td>                                    
+                                    <td>{{ substr($cancion->linkVideo, 8, 26) . "..." }}</td>
+                                    <td>{{ substr($cancion->linkSpotify, 8, 26) . "..." }}</td>
                                     <td><a href="{{ url('/canciones/ver/' . $cancion->IDcancion) }}"><button type="button"
                                                 class="btn btn-primary" data-dismiss="modal">Mas detalles</button></a></td>
                                 </tr>
@@ -174,6 +178,7 @@
                         </tbody>
                     </table>
                     {{ $canciones->links() }}
+                    </div>
                 </div>
 
             </div>
