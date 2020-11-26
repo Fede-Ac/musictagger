@@ -66,6 +66,12 @@ Route::get('/canciones/modificar/meGusta/{idCancion}/{idUsuario}', 'ControladorC
 Route::get('/canciones/modificar/noMeGusta/{idCancion}/{idUsuario}', 'ControladorCancion@noMeGusta')->where('id', '[0-9]+');
 
 
+//ETIQUETAS
+
+Route::get('/etiqueta/index', 'ControladorEtiquetas@index');
+
+Route::put('/etiqueta/store', 'ControladorEtiquetas@store');//put = poner, /etiqueta/store = URL, ControladorEtiquetas@store = controlador en el cual esta la función y luego del @ función la cual queres ejecutar
+
 //
 
 //FOOTER

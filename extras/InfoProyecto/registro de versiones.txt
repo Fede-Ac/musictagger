@@ -41,4 +41,5 @@ añadido a la BD la columna califico en usuario
 estructura de exras modificada
 welcome mejorada
 
-
+versión v1.5.1
+Empezada la función crear etiquetas, añadir etiquetas semi  funcional

@@ -172,7 +172,7 @@ class ControladorCancion extends Controller
     public function edit($IDcancion)
     {
         $cancion = Cancion::findOrFail($IDcancion);
-        dd($cancion);
+        //dd($cancion);
         return view('canciones.edit', compact('cancion'));
     }
 

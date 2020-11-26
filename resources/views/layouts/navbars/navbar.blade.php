@@ -25,6 +25,18 @@
                         <a class="nav-link" href="{{ route('register') }}">{{ __('Registrarse') }}</a>
                     </li>
                 @else
+                <li class="nav-item dropdown">
+                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                        Etiquetas <span class="caret"></span>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="{{ url('/etiqueta/index') }}">Agregar etiqueta</a>
+                        <a class="dropdown-item" href="{{ url('/etiqueta/ver/7') }}">Mostrar etiqueta</a>
+                        <a class="dropdown-item" href="{{ url('/etiqueta/modificar/7') }}">Modificar etiqueta</a>
+                        <a class="dropdown-item" href="{{ url('/etiqueta/eliminar/7') }}">Eliminar etiqueta</a>
+                    </div>
+                </li>
                     <li class="nav-item dropdown">
                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
